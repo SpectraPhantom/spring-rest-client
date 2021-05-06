@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:margin-top="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+
+    <script th:src="@{/webjars/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js}"></script>
+
+</head>
+<body>
+<div class="container-fluid" style='margin-top:20px;'>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-light">
+                    <h1 class="card-title">Users from API</h1>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive" th:if="${not #lists.isEmpty(users)}">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>Phone</th>
+                                <th>Website</th>
+                                <th>Company</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="user : ${users}">
+                                <!--/*@thymesVar id="user" type="com.restapp.springrestclient.domain.User"*/-->
+                                <td th:text="${user.id}"></td>
+                                <td th:text="${user.name}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td th:text="${user.email}"></td>
+                                <td th:text="${user.address.city}"></td>
+                                <td th:text="${user.phone}"></td>
+                                <td th:text="${user.website}"></td>
+                                <td th:text="${user.company.name}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
